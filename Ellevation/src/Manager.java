@@ -39,7 +39,10 @@ public class Manager implements IEmployee {
     this.isHR = false;
   }
 
-  //add the given employee to the manager's list of employees
+  /**
+   * Add the given employee to this manager's list of employees.
+   * @param e         Employee
+   */
   public void addEmployee(IEmployee e) {
     this.employeesManaged.add(e);
   }
@@ -79,20 +82,31 @@ public class Manager implements IEmployee {
     return false;
   }
 
-  //return the list of employees managed
+  /**
+   * Return the list of employees that this manager manages.
+   * @return    List<IEmployee></IEmployee> employees managed
+   */
   public List<IEmployee> getEmployeesManaged() {
     return this.employeesManaged;
   }
 
-  //Only allow managers to edit employee information if that employee is
-  // in the list of employees they manage.
+  /**
+   * Only allow managers to edit employee information if that employee is
+   * in the list of employees they manage.
+   * @param e
+   * @return      boolean if employee is in employeesManaged
+   */
   public boolean canEditEmployee(IEmployee e) {
     return this.employeesManaged.contains(e);
   }
 
 
-  //only allow this Manager to access the given employee's salary if that employee is in the manager's
-  //list of employees
+  /**
+   * Returns the given employees salary if this manager is eligible to view that Employee's salary.
+   * @param e   IEmployee employee
+   * @return    int salary
+   * @throws    UnsupportedOperationException if cannot view that employee's salary
+   */
   public int getEmployeeSalary(IEmployee e) {
     if (this.canEditEmployee(e)) {
       return e.getSalary();
@@ -102,7 +116,11 @@ public class Manager implements IEmployee {
     }
   }
 
-  //only change the salary of the given employee if this Manager can edit the given Employee's salary
+  /**
+   * Changes employee's salary if this manager is eligible to change that Employee's salary.
+   * @param e   IEmployee employee
+   * @param newSalary new salary
+   */
   public void editEmployeeSalary(IEmployee e, int newSalary) {
     if (this.canEditEmployee(e)) {
       e.editSalary(newSalary);
@@ -110,8 +128,14 @@ public class Manager implements IEmployee {
   }
 
 
-  //only allow this Manager to access the given employee's vacation if that employee is in the manager's
-  //list of employees
+  /**
+   * Returns the given employee's vacation balance if this manager is eligible to view that
+   * Employee's vacation balance.
+   * @param e   IEmployee employee
+   * @return    int vacation balance
+   * @throws    UnsupportedOperationException if cannot view that Employee's vacation balance.
+   */
+
   public int getEmployeeVacation(IEmployee e) {
     if (this.canEditEmployee(e)) {
       return e.getVacationBalance();
@@ -121,15 +145,24 @@ public class Manager implements IEmployee {
     }
   }
 
-  //only change the vacation balance of the given employee if this Manager can edit the given Employee's salary
+  /**
+   * Changes employee's salary if this manager is eligible to change that Employee's salary.
+   * @param e   IEmployee employee
+   * @param newVacationBalance new vacation balance
+   */
   public void editEmployeeVacationBalace(IEmployee e, int newVacationBalance) {
     if (this.canEditEmployee(e)) {
       e.editVacationBalance(newVacationBalance);
     }
   }
 
-  //only allow this Manager to access the given employee's bonus if that employee is in the manager's
-  //list of employees
+  /**
+   * Returns the given employee's annual bonus if this manager is eligible to view that
+   * Employee's vacation balance.
+   * @param e   IEmployee employee
+   * @return    int annual bonus
+   * @throws    UnsupportedOperationException if cannot view that Employee's annual bonus.
+   */
   public int getEmployeeAnnualBonus(IEmployee e) {
     if (this.canEditEmployee(e)) {
       return e.getAnnualBonus();
@@ -139,7 +172,11 @@ public class Manager implements IEmployee {
     }
   }
 
-  //only change the bonus of the given employee if this Manager can edit the given Employee's salary
+  /**
+   * Changes employee's annual bonus if this manager is eligible to change that Employee's annual bonus.
+   * @param e   IEmployee employee
+   * @param newAnnualBonus new annual bonus
+   */
   public void editEmployeeAnnualBonus(IEmployee e, int newAnnualBonus) {
     if (this.canEditEmployee(e)) {
       e.editAnnualBonus(newAnnualBonus);
