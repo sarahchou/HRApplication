@@ -1,9 +1,10 @@
 
 public class HREmployee implements IEmployee {
 
-  int salary;
-  int vacationBalance;
-  int annualBonus;
+  private int salary;
+  private int vacationBalance;
+  private int annualBonus;
+  public boolean isHR;
 
   /**
    * Constructor that takes in salary, vacation balance, annual bonus,
@@ -17,15 +18,26 @@ public class HREmployee implements IEmployee {
     this.salary = salary;
     this.vacationBalance = vb;
     this.annualBonus = ab;
+    this.isHR = true;
   }
 
-  //HR employees can only view Employee info if they are not in the HR dept.
+  /**
+   * HR employees can only view Employee info if they are not in the HR dept.
+   * @param e        Employee to view
+   * @return bool    If they can view given employee's info
+   */
   public boolean canViewEmployeeInfo(IEmployee e) {
     return !e.isHR();
   }
 
   //HR employees can access all employee info, unless the employee is also in HR.
 
+  /**
+   * HR Employee can view other Employee salaries, but not HR Employee's salaries.
+   * @param e       Employee
+   * @return int    salary
+   * @throws UnsupportedOperationException if trying to vie
+   */
   public int getEmployeeSalary(IEmployee e) {
     if (canViewEmployeeInfo(e)) {
       return e.getSalary();
@@ -35,6 +47,11 @@ public class HREmployee implements IEmployee {
     }
   }
 
+  /**
+   *
+   * @param e
+   * @return
+   */
   public int getEmployeeVacationBalance(IEmployee e) {
     if (canViewEmployeeInfo(e)) {
       return e.getVacationBalance();

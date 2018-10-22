@@ -2,11 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Manager implements IEmployee {
-  int salary;
-  int vacationBalance;
-  int annualBonus;
-  List<IEmployee> employeesManaged;
-  boolean isHR;
+  private int salary;
+  private int vacationBalance;
+  private int annualBonus;
+  private List<IEmployee> employeesManaged;
+  public boolean isHR;
+
   /**
    * Constructor that takes in salary, vacation balance, annual bonus, and a list of IEmployees
    * and initializes everything.

@@ -1,9 +1,9 @@
 public class Employee implements IEmployee {
-  int salary;
-  int vacationBalance;
-  int annualBonus;
-  IEmployee manager;
-  boolean isHR;
+  private int salary;
+  private int vacationBalance;
+  private int annualBonus;
+  public IEmployee manager;
+  public boolean isHR;
 
   /**
    * Constructor that takes in salary, vacation balance, annual bonus, and an IEmployee (manager)
