@@ -1,4 +1,7 @@
-
+/**
+ * An HR Employee is an Employee that can access information about other Employees that are not
+ * HR Employees.
+ */
 public class HREmployee implements IEmployee {
 
   private int salary;
@@ -36,7 +39,7 @@ public class HREmployee implements IEmployee {
    * HR Employee can view other Employee salaries, but not HR Employee's salaries.
    * @param e       Employee
    * @return int    salary
-   * @throws UnsupportedOperationException if trying to vie
+   * @throws UnsupportedOperationException if trying to view an HR's salary
    */
   public int getEmployeeSalary(IEmployee e) {
     if (canViewEmployeeInfo(e)) {
@@ -48,9 +51,11 @@ public class HREmployee implements IEmployee {
   }
 
   /**
-   *
-   * @param e
-   * @return
+   * HR Employee can view other Employee vacation balances, but not HR Employee's vacation
+   * balances.
+   * @param e       Employee
+   * @return int    vacation balance
+   * @throws UnsupportedOperationException if trying to view an HR's vacation balance
    */
   public int getEmployeeVacationBalance(IEmployee e) {
     if (canViewEmployeeInfo(e)) {
@@ -61,6 +66,12 @@ public class HREmployee implements IEmployee {
     }
   }
 
+  /**
+   * HR Employee can view other Employee annual bonus, but not HR Employee's annual bonus.
+   * @param e       Employee
+   * @return int    salary
+   * @throws UnsupportedOperationException if trying to view an HR's annual bonus
+   */
   public int getEmployeeAnnualBonus(IEmployee e) {
     if (canViewEmployeeInfo(e)) {
       return e.getAnnualBonus();
